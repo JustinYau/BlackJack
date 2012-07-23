@@ -16,15 +16,20 @@ class Player
   def score
     sum = 0
     @hand.each do |card|
-      basic_value = card.to_i
-      if card.start_with?("A")
-        basic_value = 11
-      elsif basic_value == 0
-        basic_value = 10
-      end
-      sum = sum + basic_value
+      sum = sum + card_value(card)
     end
     sum
+  end
+
+  #this method shouldnt be here :(
+  def card_value(card)
+    basic_value = card.to_i
+    if card.start_with?("A")
+      basic_value = 11
+    elsif basic_value == 0
+      basic_value = 10
+    end
+    basic_value
   end
 
   def name
